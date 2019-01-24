@@ -1,6 +1,99 @@
 
+/****************************************************** 
+  Mixed goodies
+ ******************************************************/
+
+export const wrapRange = (index, length) => (index % length + length) % length
+
+export const prependZero = value => { 
+    const unsignedValue = Math.abs(value).toString()
+    return unsignedValue.split('')[1] ? unsignedValue : '0' + unsignedValue
+}
+
+
+/****************************************************** 
+  Set/Get nested props (and trigger reactivity)
+ ******************************************************/
+
+export const getNestedProp = (obj, props) => {
+    const prop = props.shift()
+    if (!obj[prop] || !props.length) {
+        return obj[prop]
+    }
+    return getNestedProp(obj[prop], props)
+}
+
+export const setNestedProp = (obj, props, value) => {
+    const prop = props.shift()
+    if (!obj[prop]) {
+        Vue.set(obj, prop, {})
+    }
+    if (!props.length) {
+        if (value && typeof value === 'object' && !Array.isArray(value)) {
+            obj[prop] = { ...obj[prop], ...value }
+        } else {
+            obj[prop] = value
+        }
+        return
+    }
+    setNestedProp(obj[prop], props, value)
+}
+
+export const deleteNestedProp = (obj, props) => {
+    const prop = props.shift()
+    if (!obj[prop]) {
+        return
+    }
+    if (!props.length) {
+        Vue.delete(obj, prop)
+        return
+    }
+    deleteNestedProp(obj[prop], props)
+}
+
+
+
+
+
+
+/****************************************************** 
+  URL Params
+ ******************************************************/
+
+export const getUrlParams = (urlTemplate, urlParams, path) => {
+    let result = {}
+    const urlFormatSegments = urlTemplate.split('/')
+    for(const param in urlParams) {
+        for(const index of urlFormatSegments.keys()) {
+            if(param === urlFormatSegments[index]) {
+                const value = path.split('/')[index]
+                let parsedValue = null
+                if(isNaN(value)) parsedValue = value
+                else parsedValue = value.indexOf('.') != -1 ? parseFloat(value) : parseInt(value)
+                result[param] = parsedValue
+             }
+         }
+    }
+    return result
+ }
+
+export const setUrlParams = (params, path) => {
+    for(const key in params) {
+        path = path.replace(key, params[key])
+    }
+    return path
+}
+
+
+
+
+
+
+/****************************************************** 
+   Legacy stuff needs to be refactored
+ ******************************************************/
+
 window.utils = {
-	wrapRange: (x, n) => (x % n + n) % n,	
     regex: {
         version: /^#(\d)/,
         alliance: /\|{2} (\S{2,36}) - (\S{2,36}) \|{2}/,
@@ -24,5 +117,3 @@ window.utils = {
         return { version, alliance, carriers };
     }
 };
-
-
