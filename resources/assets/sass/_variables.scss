@@ -1,0 +1,83 @@
+
+$g-action-blue: #409EFF;
+$g-dark-blue: #364451;
+$g-pale-blue: #ECF5FF;
+$g-meta-grey: #aaa;
+$g-bright-grey: #fafafa;
+$g-border-grey: #e6e6e6;
+
+$g-txt-tiny: 10px;
+$g-txt-small: 12px;
+$g-txt-regular: 14px;
+$g-txt-medium: 16px;
+$g-txt-large: 18px;
+$g-txt-weak: $g-meta-grey;
+$g-txt-dark: $g-dark-blue;
+
+/* VARS
+*****************/
+
+// COLOR 1st degree
+$--color-dark-blue-0: #232B33 !default;
+$--color-dark-blue-1: #38698C !default;
+$--color-dark-blue-2: #364451 !default;
+
+$--color-action-blue: #409EFF !default;
+$--color-pale-blue: #ECF5FF !default;
+
+$--color-white: #FFF !default;
+$--color-black: #000 !default;
+
+$--color-grey-1: #F5F5F5 !default;
+$--color-grey-2: #F0F0F0 !default;
+$--color-grey-3: #E6E6E6 !default;
+$--color-grey-4: #DEDEDE !default;
+$--color-grey-5: #CCCCCC !default;
+$--color-grey-6: #9B9B9B !default;
+
+$--color-black-overlay: rgba(0,0,0, 0.05);
+$--color-white-overlay: rgba(0,0,0, 0.2);
+
+$--color-success: #1AB394 !default;
+$--color-success-bg: #e2eeec !default;
+$--color-warning: #e6a23c !default;
+$--color-warning-bg: #FFE3B8 !default;
+$--color-error: #f56c6c !default;
+$--color-error-bg: #fbe4e4 !default;
+$--color-info: #909399 !default;
+$--color-info-bg: #E2E5EB !default;
+
+$--color-LX: #F58122 !default; //F6A623;
+$--color-L1: #BD0FE1 !default;
+$--color-L2: #1BB5A3 !default; //49D1A8;
+$--color-L3: #38698C !default;
+
+// COLOR 2nd degree
+$--color-text-primary: $--color-dark-blue-2;
+$--color-text-secondary: darken($--color-grey-6, 10%);
+$--color-text-disabled: $--color-grey-6;
+
+// FONT
+$--font-size-tiny: 8px !default;
+$--font-size-small: 10px !default;
+$--font-size-regular: 12px !default;
+$--font-size-large: 14px !default;
+
+
+// BORDER
+$--border-radius-base: 4px !default;
+$--border-radius-small: 2px !default;
+$--border-radius-circle: 100% !default;
+
+/* Box-shadow
+-------------------------- */
+$--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
+$--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default;
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
+
+// TABLE
+$--table-cell-padding: 9px;
+$--table-cell-base-height: 40;
+$--table-border-color: $--color-grey-5; 
+
+

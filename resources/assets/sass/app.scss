@@ -1,0 +1,32 @@
+/* 
+override element-ui them-chalk theme color 
+******************************************/
+
+//$--color-primary: red;
+
+
+
+/* 
+icon font path, required 
+load element-ui chalk theme
+***************************/
+
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import "~element-ui/packages/theme-chalk/src/index";
+
+
+/* 
+component import
+********************************/
+@import 'nav-select.scss';
+
+
+/* 
+app scss
+********************************/
+body {
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+

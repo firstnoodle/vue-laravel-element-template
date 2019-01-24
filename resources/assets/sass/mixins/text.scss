@@ -1,0 +1,6 @@
+@import '~variables';
+
+@mixin truncate-line {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

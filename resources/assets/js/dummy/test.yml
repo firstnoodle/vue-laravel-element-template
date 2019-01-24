@@ -1,0 +1,52 @@
+assigned_vessel:
+    imo_number: 9199270
+    name: "OOCL CHICAGO"
+    url: "http://app.dev.eesea.com/vessel/9199270"
+monitored_port:
+    name: "Singapore"
+    code: "SGSIN"
+service:
+    name: "#7 || HL - MSE | MSC - West Med to SAEC | ZIM - SAM"
+schedule:
+    - port:
+        code: "SGSIN"
+        name: "Singapore"
+        next_port: 1271
+        type: "PORT"
+      arrival:
+        source: null
+        result:
+            date: null
+            port_hours: null
+      departure:
+        source: null
+        result:
+            date: null
+            port_hours: null
+      sources:
+          arrivals:
+              - level: 1
+                source: "FLEETMON"
+                label: "AIS ETA"
+                type: "DATE"
+                value: "2018-04-25 22:00:00.000000"
+              - level: 1
+                source: "Marine Traffic"
+                label: "AIS ETA"
+                type: "DATE"
+                value: "2018-04-25 22:00:00.000000"
+              - level: 2
+                source: "CMA CGM"
+                label: "AIS ETA"
+                type: "DATE"
+                value: "2018-04-25 22:00:00.000000"
+              - level: 2
+                source: "APL"
+                label: "AIS ETA"
+                type: "DATE"
+                value: "2018-04-25 22:00:00.000000"
+              - level: 2
+                source: "ONE"
+                label: "AIS ETA"
+                type: "DATE"
+                value: "2018-04-25 22:00:00.000000"
