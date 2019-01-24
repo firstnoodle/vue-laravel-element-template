@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+	mode: 'none',
 	entry: './resources/assets/js/app.js',
 	output: {
 		path: path.resolve(__dirname, './public/js'),

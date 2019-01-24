@@ -60,7 +60,7 @@ require('./utils');
 import Admin from 'root/pages/Admin.vue'
 
 new Vue({
-	el: '#Admin',
+	el: '#App',
 	router: router,
 	render: h => h(Admin)
 })
