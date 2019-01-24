@@ -1,25 +1,24 @@
 import VueRouter from 'vue-router'
 
 // import page components
-import Admin from './pages/Admin.vue'
-import DummyPage from './pages/DummyPage.vue'
+import Index from './pages/Index.vue'
+import Page from './pages/Page.vue'
+import NotFound from './pages/NotFound.vue'
 
 export default new VueRouter({
 	mode: 'history',
 	base: '/',
 	routes: [
-		/*
 		{
-			path: '/admin/accounts',
-			component: Accounts,
-			name: 'Accounts',
+			path: '/',
+			component: Page,
+			name: 'Page',
 			children: []
 		},
-		*/
 		// CATCH ALL
 		{ 
 			path: "*", 
-			component: DummyPage 
+			component: NotFound
 		}
 	],
 	linkActiveClass: 'is-active'

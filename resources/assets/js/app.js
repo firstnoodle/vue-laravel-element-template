@@ -57,10 +57,10 @@ hljs.configure({tabReplace: '    '})
 
 require('./utils');
 
-import Admin from 'root/pages/Admin.vue'
+import Index from 'root/pages/Index.vue'
 
 new Vue({
 	el: '#App',
 	router: router,
-	render: h => h(Admin)
+	render: h => h(Index)
 })

@@ -1,16 +1,12 @@
 <template>
 	<div class="app-container">
-		YO
+		Parent view
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'Admin',
-	data() {
-		return {
-		}
-	},
+	name: 'Index',
 }
 </script>
