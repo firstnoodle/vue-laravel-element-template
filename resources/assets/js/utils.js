@@ -4,6 +4,7 @@ import {SERVICE_VERSION_REGEX, SERVICE_ALLIANCE_REGEX, SERVICE_CARRIER_REGEX} fr
   Mixed goodies
  ******************************************************/
 
+// like % (modulo), but also works (loops) when passing negative numbers - ie in range 0-10 passing -2 would yield 9
 export const wrapRange = (index, length) => (index % length + length) % length
 
 export const prependZero = value => { 
