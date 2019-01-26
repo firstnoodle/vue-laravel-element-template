@@ -1,9 +1,9 @@
 <template>
 	<div class="app-container">
-		<h1>LIST</h1>
+		<h3>List</h3>
 		<!-- Filters -->
 		<!-- Header labels -->
-		<TableHeader :labels="labels" @sortingChanged="sortList"></TableHeader>
+		<TableHeader :headers="headers" @sortingChanged="sortList"></TableHeader>
 		<!-- Rows -->
 	</div>
 </template>
@@ -16,7 +16,14 @@ export default {
 	components: { TableHeader },
 	data() {
 		return {
-			labels: [ 'Service', 'Vessel', 'Monitored port', 'Proforma ETA', 'eeSea ETA', 'Subscriber' ]
+			headers: [ 
+				{ label: 'Service', span: 4 }, 
+				{ label: 'Vessel', span: 4 },
+				{ label: 'Monitored port', span: 4 }, 
+				{ label: 'Proforma ETA', span: 4 }, 
+				{ label: 'eeSea ETA', span: 4 },
+				{ label: 'Subscriber', span: 4 } 
+			]
 		}
 	},
 	methods: {

@@ -1,13 +1,14 @@
 <template>
-	<div class="table__header">
+	<el-row class="table__header">
 		<TableHeaderLabel 
-			v-for="label in labels" 
-			:label="label"
-			:sort="selected === label ? direction : null"
+			v-for="header in headers" 
+			:label="header.label"
+			:sort="selected === header.label ? direction : null"
+			:span="header.span"
 			@click="labelClick"	
 			>
 		</TableHeaderLabel>
-	</div>
+	</el-row>
 </template>
 
 <script>
@@ -15,7 +16,7 @@ import TableHeaderLabel from './TableHeaderLabel.vue'
 
 export default {
 	name: 'TableHeader',
-	props: [ 'labels' ],
+	props: [ 'headers' ],
 	components: { TableHeaderLabel },
 	data() {
 		return {
@@ -24,7 +25,7 @@ export default {
 		}
 	},
 	created() {
-		this.selected = this.labels ? this.labels[0] : null
+		this.selected = this.headers ? this.headers[0].label : null
 	},
 	methods: {
 		labelClick(label) {

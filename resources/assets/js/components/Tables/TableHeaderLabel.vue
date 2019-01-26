@@ -1,19 +1,21 @@
 <template>
-	<div
-		v-else
-		class="table__header-label"
-		@click="$emit('click', label)"
+	<el-col :span="span">
+		<div
+			class="table__header-label"
+			:class="{ 'is-active' : sort }"
+			@click="$emit('click', label)"
 		>
-		{{ label }}
-		<i class="el-icon-arrow-down" v-if="sort === 'descending'"></i>
-		<i class="el-icon-arrow-up" v-else-if="sort === 'ascending'"></i>
-	</div>
+			{{ label }}
+			<i class="el-icon-arrow-down" v-if="sort === 'descending'"></i>
+			<i class="el-icon-arrow-up" v-else-if="sort === 'ascending'"></i>
+		</div>
+	</el-col>
 </template>
 
 <script>
 export default {
 	name: 'TableHeaderLabel',
-	props: [ 'label', 'sort' ],
+	props: [ 'label', 'sort', 'span' ],
 }
 </script>
 
@@ -21,7 +23,11 @@ export default {
 	.table__header-label {
 		cursor: pointer;
 		display: inline-block;
-		padding: 10px;
+		padding-right: 10px;
 		user-select: none;
+
+		&.is-active {
+			font-weight: bold;
+		}
 	}
 </style>
