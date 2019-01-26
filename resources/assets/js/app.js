@@ -57,10 +57,10 @@ hljs.configure({tabReplace: '    '})
 
 require('./utils');
 
-import Index from 'root/pages/Index.vue'
+import App from 'root/pages/App.vue'
 
 new Vue({
 	el: '#App',
 	router: router,
-	render: h => h(Index)
+	render: h => h(App)
 })
