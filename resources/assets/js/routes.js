@@ -1,8 +1,9 @@
 import VueRouter from 'vue-router'
 
 // import page components
-import Index from './pages/Index.vue'
 import Page from './pages/Page.vue'
+import Components from './pages/Components.vue'
+import List from './pages/components/List.vue'
 import NotFound from './pages/NotFound.vue'
 
 export default new VueRouter({
@@ -15,6 +16,19 @@ export default new VueRouter({
 			name: 'Page',
 			children: []
 		},
+		{
+			path: '/components',
+			component: Components,
+			name: 'Components',
+			children: [
+				{
+					path: 'list',
+					component: List,
+					name: 'List',
+				},
+			]
+		},
+
 		// CATCH ALL
 		{ 
 			path: "*", 

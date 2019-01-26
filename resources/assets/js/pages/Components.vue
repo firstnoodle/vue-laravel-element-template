@@ -1,12 +1,13 @@
+
 <template>
-	<div class="app-container">
-		Parent view
+	<div class="components">
+		<h1>Components</h1>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'App',
+	name: 'Components'
 }
 </script>
