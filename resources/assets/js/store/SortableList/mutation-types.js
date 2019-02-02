@@ -1,0 +1,2 @@
+
+export const SET_FORECASTS = 'SET_FORECASTS'
