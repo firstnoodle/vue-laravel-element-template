@@ -2,6 +2,7 @@
 	<el-row class="table__header">
 		<TableHeaderLabel 
 			v-for="header in headers" 
+			:key="uniqueKey(header)"
 			:label="header.label"
 			:sort="selected === header.label ? direction : null"
 			:span="header.span"
