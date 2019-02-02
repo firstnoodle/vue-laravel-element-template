@@ -2,31 +2,10 @@ import '../sass/app.scss'
 
 import Vue from 'vue'
 
-/* Directives
-******************/
-import highlightjs from './directives/highlightjs.js'
-Vue.directive('highlightjs', highlightjs)
-
-/* Mixins
-******************/
-import uniqueKey from './mixins.js'
-Vue.mixin(uniqueKey)
-
-
-/* Element-ui 
- * theme-chalk is extended through sass/app.scss
-************************************************/
-import ElementUI from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en'
-Vue.use(ElementUI, { locale })
-
-
-/* Router & routes
+/* Router
 ******************/
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-import router from './routes.js'
-
 
 /* Axios (AJAX)
 ******************/
@@ -39,6 +18,27 @@ if (token) {
 } else { 
 	console.warn('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token - axios not instantiated')
 }
+
+/* Directives
+******************/
+import highlightjs from './directives/highlightjs.js'
+Vue.directive('highlightjs', highlightjs)
+
+/* Mixins
+******************/
+import globals from './mixins/globals.js'
+Vue.mixin(globals)
+
+/* Element-ui 
+ * theme-chalk is extended through sass/app.scss
+************************************************/
+import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.use(ElementUI, { locale })
+
+/* Element-ui classes for responsive hiding
+************************************************/
+import 'element-ui/lib/theme-chalk/display.css';
 
 
 /* Other dependencies
@@ -58,9 +58,12 @@ hljs.configure({tabReplace: '    '})
 require('./utils');
 
 import App from 'root/pages/App.vue'
+import store from 'root/store/index.js'
+import router from './routes.js'
 
 new Vue({
 	el: '#App',
-	router: router,
+	router,
+	store,
 	render: h => h(App)
 })
