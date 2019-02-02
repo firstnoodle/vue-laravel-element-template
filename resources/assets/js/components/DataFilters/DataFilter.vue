@@ -130,7 +130,7 @@
 
 <script>
 export default {
-	name: 'Filter',	
+	name: 'DataFilter',	
 	data() {
 		return {
 			decrementActive: false,

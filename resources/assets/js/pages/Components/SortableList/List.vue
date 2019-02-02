@@ -4,7 +4,7 @@
 		<!-- Filters -->
 		<!-- Header labels -->
 		<TableHeader :headers="headers" @sortingChanged="sortList"></TableHeader>
-		<fltr @delete="onFilterDelete"></fltr>
+		<DataFilters></DataFilters>
 		<el-row 
 			v-for="forecast in $store.getters['SortableList/forecasts']"
 			:key="uniqueKey(forecast)"
@@ -22,7 +22,7 @@
 
 <script>
 import TableHeader from 'root/components/Tables/TableHeader.vue'
-import fltr from 'root/components/Filters/Filter.vue'
+import DataFilters from 'root/components/DataFilters/DataFilters.vue'
 import {stringAscending, stringDescending, numberAscending, numberDescending, dateAscending, dateDescending} from 'root/utils.js'
 
 import {summary} from 'root/data/forecastSummaries.js'
@@ -30,7 +30,7 @@ import {summary} from 'root/data/forecastSummaries.js'
 export default {
 	name: 'List',
 	props: [],
-	components: { fltr, TableHeader },
+	components: { DataFilters, TableHeader },
 	data() {
 		return {
 			headers: [ 
