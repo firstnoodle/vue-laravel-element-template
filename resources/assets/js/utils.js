@@ -55,8 +55,42 @@ export const deleteNestedProp = (obj, props) => {
 
 
 
+/****************************************************** 
+  Sorting methods
+ ******************************************************/
 
+export const stringAscending = (a,b) => {
+    const _a = a.name.toUpperCase()
+    const _b = b.name.toUpperCase()
+    if (_a < _b) return -1
+    if (_a > _b) return 1
+    return 0
+}
+export const stringDescending = (a,b) => {
+    const _a = a.name.toUpperCase()
+    const _b = b.name.toUpperCase()
+    if (_a < _b) return 1
+    if (_a > _b) return -1
+    return 0
+}
 
+export const numberAscending = (a,b) => { a-b }
+export const numberDescending = (a,b) => { b-a }
+
+export const dateAscending = (a,b) => {
+    const _a = moment(a)
+    const _b = moment(b)
+    if(_a.isBefore(_b)) return 1
+    if(_b.isBefore(_a)) return -1
+    return 0
+}
+export const dateDescending = (a,b) => {
+    const _a = moment(a)
+    const _b = moment(b)
+    if(_a.isBefore(_b)) return -1
+    if(_b.isBefore(_a)) return 1
+    return 0
+}
 
 /****************************************************** 
   URL Params
