@@ -1,5 +1,6 @@
 
 
 export const state = {
-	hello: 'World'		
+	filters: [],
+	forecasts: null	,
 }
