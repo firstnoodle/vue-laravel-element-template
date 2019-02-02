@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // import page components
 import Page from './pages/Page.vue'
 import Components from './pages/Components.vue'
-import List from './pages/components/List.vue'
+import List from './pages/components/SortableList/List.vue'
 import NotFound from './pages/NotFound.vue'
 
 export default new VueRouter({
