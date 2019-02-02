@@ -5,7 +5,18 @@
 		<!-- Header labels -->
 		<TableHeader :headers="headers" @sortingChanged="sortList"></TableHeader>
 		<fltr @delete="onFilterDelete"></fltr>
-		<!-- Rows -->
+		<el-row 
+			v-for="forecast in $store.getters['SortableList/forecasts']"
+			:key="uniqueKey(forecast)"
+			style="font-size:12px"
+			>
+			<el-col :span="6">{{ forecast.service.name }}</el-col>
+			<el-col :span="3">{{ forecast.vessel ? forecast.vessel.name : 'no vessel' }}</el-col>
+			<el-col :span="3">{{ forecast.user_service_proforma.port.name }}</el-col>
+			<el-col :span="3">{{ forecast.next_port.name }}</el-col>
+			<el-col :span="3">{{ forecast.user_service_proforma.user.name }}</el-col>
+			<el-col :span="3">{{ forecast.responsible_user ? forecast.responsible_user.name : 'No responsible user' }}</el-col>
+		</el-row>
 	</div>
 </template>
 
@@ -23,12 +34,12 @@ export default {
 	data() {
 		return {
 			headers: [ 
-				{ label: 'Service', span: 4 }, 
-				{ label: 'Vessel', span: 4 },
-				{ label: 'Monitored port', span: 4 }, 
-				{ label: 'Proforma ETA', span: 4 }, 
-				{ label: 'eeSea ETA', span: 4 },
-				{ label: 'Subscriber', span: 4 } 
+				{ label: 'Service', span: 6 }, 
+				{ label: 'Vessel', span: 3 },
+				{ label: 'Monitored port', span: 3 }, 
+				{ label: 'Next port', span: 3 }, 
+				{ label: 'Subscriber', span: 3 }, 
+				{ label: 'Responsible', span: 3 },
 			],
 			fields: [
 				{
@@ -78,7 +89,6 @@ export default {
 		}
 	},
 	created() {
-		console.log(this.summaries)	
 		this.$store.dispatch('SortableList/loadData')
 	},
 	methods: {
