@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 // import page components
 import Page from './pages/Page.vue'
 import Components from './pages/Components.vue'
-import List from './pages/components/SortableList/List.vue'
+import DataTableDemo from './pages/components/SortableList/DataTableDemo.vue'
 import NotFound from './pages/NotFound.vue'
 
 export default new VueRouter({
@@ -22,9 +22,9 @@ export default new VueRouter({
 			name: 'Components',
 			children: [
 				{
-					path: 'list',
-					component: List,
-					name: 'List',
+					path: 'data-table-demo',
+					component: DataTableDemo,
+					name: 'DataTableDemo',
 				},
 			]
 		},
