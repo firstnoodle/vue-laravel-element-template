@@ -20,6 +20,7 @@
 			>
 			<i class="el-icon-plus"></i>
 		</div>
+		<div class="filters__count">rows {{ $store.getters['DataTable/rows'].length }}</div>
 	</div>
 </template>
 
