@@ -1,0 +1,40 @@
+@import '~variables';
+
+.table__body {
+	font-size: $--font-size-regular;
+	padding: 0px 10px;
+}
+
+.table-header {
+	background-color: $--color-grey-1;
+	border-bottom: 1px solid #EAEEF5;
+	margin-bottom: 6px;
+	padding: 4px 10px 0px 10px;
+}
+
+.table-header__label {
+	color: #606266;
+	cursor: pointer;
+	display: inline-block;
+	font-size: $--font-size-small;
+	font-weight: bold;
+	padding-right: 10px;
+	user-select: none;
+
+	&.is-active {
+		color: $--color-action-blue;
+	}
+
+	> i {
+		color: $--color-action-blue;
+	}
+}
+
+.table__row {
+	padding: 10px 0px;
+	border-bottom: 1px solid $--color-grey-2;
+
+	&.is-highlighted {
+		background-color: $--color-pale-blue;
+	}
+}
