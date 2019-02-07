@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import {SERVICE_VERSION_REGEX, SERVICE_ALLIANCE_REGEX, SERVICE_CARRIER_REGEX} from './regex.js'
 
 /****************************************************** 
@@ -10,6 +11,33 @@ export const wrapRange = (index, length) => (index % length + length) % length
 export const prependZero = value => { 
     const unsignedValue = Math.abs(value).toString()
     return unsignedValue.split('')[1] ? unsignedValue : '0' + unsignedValue
+}
+
+export const isObject = obj => obj !== null && typeof obj === 'object'
+export const arrayContains = (arr, value) => arr.indexOf(value) > -1
+
+// get object property value using string path fx: 'foo.bar.name'
+export const getValueFromPath = (obj, path) => {
+    const getNestedProp = (obj, props) => {
+        const prop = props.shift()
+        if (!obj[prop] || !props.length) return obj[prop]
+        return getNestedProp(obj[prop], props)
+    }
+    let segments = path.split('.')
+    return getNestedProp(obj, segments)
+}
+
+
+/****************************************************** 
+  Generate unique id
+ ******************************************************/
+
+const UNIQUE_ID_KEY = '__id__'
+const ID_PREFIX = '__id_prefix__' + Date.now() + '_'
+let uid = 0
+
+export const uniqueId = () => {
+    return ID_PREFIX + uid++
 }
 
 
@@ -59,37 +87,61 @@ export const deleteNestedProp = (obj, props) => {
   Sorting methods
  ******************************************************/
 
-export const stringAscending = (a,b) => {
-    const _a = a.name.toUpperCase()
-    const _b = b.name.toUpperCase()
-    if (_a < _b) return -1
-    if (_a > _b) return 1
-    return 0
-}
-export const stringDescending = (a,b) => {
-    const _a = a.name.toUpperCase()
-    const _b = b.name.toUpperCase()
-    if (_a < _b) return 1
-    if (_a > _b) return -1
-    return 0
-}
-
-export const numberAscending = (a,b) => { a-b }
-export const numberDescending = (a,b) => { b-a }
-
-export const dateAscending = (a,b) => {
-    const _a = moment(a)
-    const _b = moment(b)
-    if(_a.isBefore(_b)) return 1
-    if(_b.isBefore(_a)) return -1
-    return 0
-}
-export const dateDescending = (a,b) => {
-    const _a = moment(a)
-    const _b = moment(b)
-    if(_a.isBefore(_b)) return -1
-    if(_b.isBefore(_a)) return 1
-    return 0
+export const sort = { 
+    stringAscending: path => {
+        return (a,b) => {
+            let _a = getValueFromPath(a, path)
+            _a = _a ? _a.toUpperCase() : _a
+            let _b = getValueFromPath(b, path)
+            _b = _b ? _b.toUpperCase() : _b
+            if (_a < _b) return 1
+            if (_a > _b) return -1
+            return 0
+        }   
+    },
+    stringDescending: path => {
+        return (a,b) => {
+            let _a = getValueFromPath(a, path)
+            _a = _a ? _a.toUpperCase() : _a
+            let _b = getValueFromPath(b, path)
+            _b = _b ? _b.toUpperCase() : _b
+            if (_a < _b) return -1
+            if (_a > _b) return 1
+            return 0
+        }
+    },
+    numberAscending: path => {
+        return (a,b) => { 
+            const _a = getValueFromPath(a, path)
+            const _b = getValueFromPath(b, path)
+            return a-b 
+        }
+    },
+    numberDescending: path => {
+        return (a,b) => { 
+            const _a = getValueFromPath(a, path)
+            const _b = getValueFromPath(b, path)
+            return a-b 
+        }
+    },
+    dateAscending: path => {
+        return (a,b) => {
+            const _a = moment(getValueFromPath(a, path))
+            const _b = moment(getValueFromPath(b, path))
+            if(_a.isBefore(_b)) return 1
+            if(_b.isBefore(_a)) return -1
+            return 0
+        }
+    },
+    dateDescending: path => {
+        return (a,b) => {
+            const _a = moment(getValueFromPath(a, path))
+            const _b = moment(getValueFromPath(b, path))
+            if(_a.isBefore(_b)) return -1
+            if(_b.isBefore(_a)) return 1
+            return 0
+        }
+    },
 }
 
 /****************************************************** 
