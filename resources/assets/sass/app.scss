@@ -12,13 +12,14 @@ load element-ui chalk theme
 ***************************/
 
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
-@import "~element-ui/packages/theme-chalk/src/index";
+@import '~element-ui/packages/theme-chalk/src/index';
 
 
 /* 
 component import
 ********************************/
-//@import 'nav-select.scss';
+@import 'components/DataTables/DataTable.scss';
+@import 'components/DataTables/DataFilter.scss';
 
 
 /* 
