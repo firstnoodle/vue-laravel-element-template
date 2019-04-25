@@ -5,8 +5,8 @@ export const getters = {
 	columns: (state) => {
 		return state.columns
 	},
-	columnByLabel: (state) => (label) => {
-		return state.columns.find(column => column.label === label)
+	columnByName: (state) => (name) => {
+		return state.columns.find(column => column.name === name)
 	},
 	columnValue: (state) => (row, path) => {
 		return getValueFromPath(row, path)
@@ -14,12 +14,16 @@ export const getters = {
 	filters: (state) => {
 		return state.filters
 	},
-	getColumnClasses: (state) => (label) => {
-		const column = state.columns.find(column => column.label === label)
+	getColumnClasses: (state) => (name) => {
+		const column = state.columns.find(column => column.name === name)
 		return column ? column.classes : null
 	},
-	getColumnLayout: (state) => (label) => {
-		const column = state.columns.find(column => column.label === label)
+	getColumnFields: (state) => (name) => {
+		const column = state.columns.find(column => column.name === name)
+		return column ? column.fields : null
+	},
+	getColumnLayout: (state) => (name) => {
+		const column = state.columns.find(column => column.name === name)
 		return column ? column.layout : null
 	},
 	rows: (state, getters) => {
