@@ -3,7 +3,11 @@ import VueRouter from 'vue-router'
 // import page components
 import Page from './pages/Page.vue'
 import Components from './pages/Components.vue'
+
 import DataTableDemo from './pages/components/SortableList/DataTableDemo.vue'
+import FiltersAndPagination from './pages/components/FiltersAndPagination.vue'
+import DataViewerDemo from './pages/components/DataViewerDemo.vue'
+
 import NotFound from './pages/NotFound.vue'
 
 export default new VueRouter({
@@ -26,9 +30,18 @@ export default new VueRouter({
 					component: DataTableDemo,
 					name: 'DataTableDemo',
 				},
+				{
+					path: 'data-viewer-demo',
+					component: DataViewerDemo,
+					name: 'DataViewerDemo',
+				},
+				{
+					path: 'filters-and-pagination',
+					component: FiltersAndPagination,
+					name: 'FiltersAndPagination',
+				},
 			]
 		},
-
 		// CATCH ALL
 		{ 
 			path: "*", 

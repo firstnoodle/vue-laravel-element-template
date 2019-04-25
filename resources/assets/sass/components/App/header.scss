@@ -1,0 +1,89 @@
+@import '~variables';
+
+/******************************************
+Main navigation (a modded element ui select)
+******************************************/
+
+.app-header__nav {
+	width: 240px;
+	
+	& > .el-input {
+		font-size: 12px;
+
+		& > .el-input__inner {
+			background-color: lighten($--color-dark-blue-3, 5%);
+			border: 1px solid $--color-dark-blue-3;
+			border-radius: 0px;
+			color: #ddd;
+			height: 60px;
+		}
+
+		&.is-focus > .el-input__inner {
+			border: 1px solid $--color-dark-blue-3;
+		}
+	}
+}
+
+// Select -> nav dropdown (popper)
+.el-select-dropdown.el-popper[x-placement^="bottom"].app-header__nav-popper {
+	background-color: $--color-dark-blue-3;
+	border-color: $--color-dark-blue-3;
+	border-radius: 0px;
+	margin-top: 0px;	
+
+	& .el-scrollbar__view.el-select-dropdown__list {
+		padding: 0px;
+	}
+
+	& .el-select-dropdown__item {
+		font-size: 12px;
+		height: 50px;
+		line-height: 50px;
+		padding: 0px;
+
+		&.hover {
+			background-color: $--color-action-blue;
+		}
+		&.selected {
+			color: red;
+		}
+
+		& > a {
+			color: white;
+			display: block;
+			height: 100%;
+			padding: 0 20px;
+			text-decoration: none;
+			width: 100%;
+			&:hover {
+				background-color: $--color-action-blue;
+			}
+		}
+	}
+
+	& > .popper__arrow {
+		visibility: hidden;
+	}
+}
+
+/******************************************
+Logo
+******************************************/
+
+.app-header__logo-container {
+	color: white;
+	left: 50%;
+	position: absolute;
+
+	.app-header__logo {
+		margin-left: -50%;
+	}
+}
+
+/******************************************
+Actions (buttons that are not part of Main nav)
+******************************************/
+.app-header__actions {
+	color: white;
+	float: right;
+}

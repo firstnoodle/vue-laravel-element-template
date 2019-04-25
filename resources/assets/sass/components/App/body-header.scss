@@ -1,0 +1,50 @@
+@import '~variables';
+
+$-app-body-header-height: 40px;
+
+.menu-item {
+	cursor: pointer;
+	border-left: 1px solid $--color-dark-blue-3;
+	display: inline-block;
+	font-size: $--font-size-regular;
+	height: 100%;
+	padding: 0 20px;
+	position: relative;
+	text-decoration: none;
+
+
+	&:hover {
+		background-color: lighten($--color-dark-blue-2, 5%);
+		& > .menu-item__label {
+			color: white;
+		}
+	}
+
+	&.is-active {
+		background-color: lighten($--color-dark-blue-2, 10%);
+
+		& > .menu-item__label {
+			color: $--color-white;
+		}
+
+		& > .menu-item__bar {
+			visibility: visible;
+		}
+	}
+}
+.menu-item__label {
+	color: $--color-text-secondary;
+	height: 100%;
+	line-height: $-app-body-header-height;
+}
+
+.menu-item__bar {
+	background-color: $--color-action-blue;
+	bottom: 0px;
+	display: inline-block;
+	height: 2px;
+	left: 0px;
+	position: absolute;
+	visibility: hidden;
+	width: 100%;
+}

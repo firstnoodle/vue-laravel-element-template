@@ -1,6 +1,6 @@
 @import '~variables';
 
-.table__body {
+.table-body {
 	font-size: $--font-size-regular;
 	padding: 0px 10px;
 }
@@ -8,7 +8,6 @@
 .table-header {
 	background-color: $--color-grey-1;
 	border-bottom: 1px solid #EAEEF5;
-	margin-bottom: 6px;
 	padding: 4px 10px 0px 10px;
 }
 
@@ -16,7 +15,7 @@
 	color: #606266;
 	cursor: pointer;
 	display: inline-block;
-	font-size: $--font-size-small;
+	font-size: 10px; // $--font-size-small; doesn't work for some weird reason..
 	font-weight: bold;
 	padding-right: 10px;
 	user-select: none;
@@ -30,11 +29,14 @@
 	}
 }
 
-.table__row {
-	padding: 10px 0px;
+.table-row {
 	border-bottom: 1px solid $--color-grey-2;
+}
 
+.table-column {
+	padding: 10px 0px;
 	&.is-highlighted {
-		background-color: $--color-pale-blue;
+		// background-color: $--color-pale-blue;
 	}
+
 }

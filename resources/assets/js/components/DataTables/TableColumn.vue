@@ -1,5 +1,5 @@
 <template>
-	<el-col class="table__column" :class="classes" v-bind="layout"><slot></slot></el-col>	
+	<el-col class="table-column" :class="classes" v-bind="layout"><slot></slot></el-col>	
 </template>
 
 <script>

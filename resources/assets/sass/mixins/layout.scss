@@ -1,0 +1,15 @@
+@import '~variables';
+
+@mixin flexRow {
+	display: flex;
+	flex-direction: row;
+	/* IMPORTANT: you need this for non-chrome browsers */
+	min-width: 0px; 
+}
+
+@mixin flexColumn {
+	display: flex;
+	flex-direction: column;
+	/* IMPORTANT: you need this for non-chrome browsers */
+	min-height: 0px; 
+}

@@ -1,8 +1,6 @@
-
 <template>
-	<div class="app">
-		<!-- app-header -->
-		<header class="app-header">
+	<div class="app-container">
+		<header class="app-header" ref="header">
 			<el-select 
 				class="app-header__nav"
 				v-model="selectedRoute"
@@ -19,15 +17,15 @@
 				</el-option>
 			</el-select>
 		</header>
-		<!-- app-body -->
-		<router-view></router-view>
+		<div class="app-content" ref="main" :style="{ height: mainHeight }">
+			<router-view></router-view>
+		</div>
 	</div>
-
 </template>
 
 <script>
 export default {
-	name: 'App',
+	name: 'Admin',
 	data() {
 		return {
 			mainHeight: null,
@@ -54,8 +52,8 @@ export default {
 				label: route.name
 			}
 		})
-		// window.addEventListener('resize', this.reflow)
-		// this.reflow()
+		window.addEventListener('resize', this.reflow)
+		this.reflow()
 	},
 	watch:{
 		// update dropdown if user clicks on fx browser back button
@@ -67,7 +65,7 @@ export default {
     	}
 	},
 	beforeDestroy() {
-		//window.removeEventListener('resize', this.reflow)
+		window.removeEventListener('resize', this.reflow)
 	},
 	methods: {
 		reflow(e) { 

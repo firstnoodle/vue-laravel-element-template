@@ -1,6 +1,9 @@
+// import our own variables
+@import '~variables';
+
 /* 
-override element-ui them-chalk theme color 
-******************************************/
+override element-ui them-chalk theme variables
+**********************************************/
 
 //$--color-primary: red;
 
@@ -14,20 +17,17 @@ load element-ui chalk theme
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 @import '~element-ui/packages/theme-chalk/src/index';
 
+/* 
+mixins import
+********************************/
+@import 'mixins/all.scss';
 
 /* 
 component import
 ********************************/
+@import 'components/App/layout.scss';
+@import 'components/App/header.scss';
+@import 'components/App/body-header.scss';
+
 @import 'components/DataTables/DataTable.scss';
 @import 'components/DataTables/DataFilter.scss';
-
-
-/* 
-app scss
-********************************/
-body {
-	padding: 0px;
-	margin: 0px;
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-}
-

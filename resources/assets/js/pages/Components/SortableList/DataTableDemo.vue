@@ -1,19 +1,21 @@
 <template>
-	<div class="app-container">
+	<div class="app-body-content">
 		<DataFilters></DataFilters>
+			
 		<TableHeader :columns="columns" :gutter="gutter"></TableHeader>
-		<div class="table__body">
+		<div class="table-body">
+
 			<el-row 
 				v-for="row in rows"
 				:key="uniqueKey(row)"
 				:gutter="gutter"
-				class="table__row"
+				class="table-row"
 				>
 				<TableColumn 
 					:layout="$store.getters['DataTable/getColumnLayout']('Service')"
 					:classes="$store.getters['DataTable/getColumnClasses']('Service')"
 					>
-					<template v-bind:default="row" class="is-hidden">
+					<template v-bind:default="row">
 						{{ row.service ? row.service.name : 'no data' }}
 					</template>
 				</TableColumn>
@@ -59,27 +61,73 @@
 				</TableColumn>
 			</el-row>
 		</div>
+		<DataPaginator 
+			:current_page="pagination.current_page" 
+			:per_page="pagination.per_page" 
+			:total="pagination.total" 
+			:last_page="pagination.last_page"
+			@currentPageChange="onCurrentPageChange" 
+			@perPageChange="onPerPageChange"
+			>
+		</DataPaginator>
 	</div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import {wrapRange} from 'root/utils.js'
 import TableHeader from 'root/components/DataTables/TableHeader.vue'
 import TableColumn from 'root/components/DataTables/TableColumn.vue'
 import DataFilters from 'root/components/DataTables/DataFilters.vue'
+import DataPaginator from 'root/components/DataTables/DataPaginator.vue'
 
 export default {
 	name: 'List',
 	props: [],
-	components: { DataFilters, TableHeader, TableColumn },
+	components: { DataFilters, DataPaginator, TableHeader, TableColumn },
 	data() {
 		return {
 			gutter: 20,
+			pagination: {
+				current_page: 1,
+				total: 467,
+				last_page: 10,
+				per_page: 50,
+			}
 		}
 	},
 	computed: {
 		...mapGetters('DataTable', ['columns', 'rows']),
 	},
-	created() { this.$store.dispatch('DataTable/loadData') },
+	watch: {
+		'$route' (to, from) {
+			// API calls
+			console.log('Fetch data')
+		}
+	},
+	created() { 
+		this.$store.dispatch('DataTable/loadData') 
+	},
+	methods: {
+		updateRoute() {
+			this.$router.push({
+				path: this.$router.history.current.fullPath,
+				query: {
+					current_page: this.pagination.current_page, 
+					per_page: this.pagination.per_page
+				}
+			})
+		},
+		onCurrentPageChange(page) {
+			this.pagination.current_page = page
+			this.updateRoute()
+		},
+		onPerPageChange({label, value}) {
+			this.pagination.last_page = label
+			this.pagination.per_page = value
+			this.pagination.current_page = 1
+			this.updateRoute()
+		},
+	}
 }
 </script>

@@ -83,6 +83,9 @@ export const state = {
 		},
 	],
 	filters: [],
+	pagination: {
+
+	},
 	sorting: {
 		column: null,
 		direction: 'descending'
