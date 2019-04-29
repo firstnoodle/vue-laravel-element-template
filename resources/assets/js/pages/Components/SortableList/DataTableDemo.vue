@@ -16,11 +16,6 @@
 					:classes="$store.getters['DataTable/getColumnClasses']('Service')"
 					>
 					<template v-bind:default="row">
-						<!--
-						<span v-for="field in $store.getters['DataTable/getColumnFields']('Service')"> 
-							{{ getValueFromPath(row, field.path)}}
-						</span>
-						-->
 						<div>{{ row.service ? row.service.name : 'no data' }}</div>
 						<div>{{ row.vessel ? row.vessel.name : 'no data' }}</div>
 					</template>
@@ -81,7 +76,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import {getValueFromPath, wrapRange} from 'root/utils.js'
+import {wrapRange} from 'root/utils.js'
 import TableHeader from 'root/components/DataTables/TableHeader.vue'
 import TableColumn from 'root/components/DataTables/TableColumn.vue'
 import DataFilters from 'root/components/DataTables/DataFilters.vue'
@@ -118,7 +113,6 @@ export default {
 		this.$store.dispatch('DataTable/loadData') 
 	},
 	methods: {
-		getValueFromPath,
 		updateRoute() {
 			this.$router.push({
 				path: this.$router.history.current.fullPath,
