@@ -7,10 +7,11 @@
 			v-for="column in columns"
 			:key="uniqueKey(column)"
 			v-bind="column.layout"
+			class="table-header-column"
 			>	
 			<div
 				v-for="field in $store.getters['DataTable/getColumnFields'](column.name)"
-				class="table-header__label"
+				class="table-header-column__label"
 				:class="{ 'is-active' : sortBy === field }"
 				@click="setSortingColumn(field)"
 				>
