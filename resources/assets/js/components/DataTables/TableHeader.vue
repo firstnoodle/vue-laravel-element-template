@@ -9,12 +9,13 @@
 			v-bind="column.layout"
 			>	
 			<div
+				v-for="field in $store.getters['DataTable/getColumnFields'](column.name)"
 				class="table-header__label"
-				:class="{ 'is-active' : sortBy === column }"
-				@click="setSortingColumn(column)"
+				:class="{ 'is-active' : sortBy === field }"
+				@click="setSortingColumn(field)"
 				>
-				{{ column.label }}
-				<i v-if="sortBy === column" :class="computedSortDirectionIconClass"></i>
+				{{ field.label }}
+				<i v-if="sortBy === field" :class="computedSortDirectionIconClass"></i>
 			</div>
 		</el-col>
 	</el-row>
